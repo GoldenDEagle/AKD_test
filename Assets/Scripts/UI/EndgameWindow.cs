@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Services.Gameplay;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -21,17 +22,23 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _restartButton.onClick.AddListener(RestartGame);
-            _gameplayService.OnGameCompleted += ShowWindow;
+            _gameplayService.OnGameCompleted += GameCompleted;
         }
 
         private void OnDisable()
         {
             _restartButton.onClick.RemoveAllListeners();
-            _gameplayService.OnGameCompleted -= ShowWindow;
+            _gameplayService.OnGameCompleted -= GameCompleted;
         }
 
-        private void ShowWindow()
+        private void GameCompleted()
         {
+            ShowWindowAfterDelay().Forget();
+        }
+
+        private async UniTaskVoid ShowWindowAfterDelay()
+        {
+            await UniTask.Delay(1500);
             _window.gameObject.SetActive(true);
         }
 
