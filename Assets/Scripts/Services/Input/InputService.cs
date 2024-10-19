@@ -24,12 +24,12 @@ namespace Assets.Scripts.Services.Input
 
         private void Drag_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            Debug.Log("Drag started");
+            OnPointerDown?.Invoke();
         }
 
         private void Drag_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            Debug.Log("Drag ended");
+            OnPointerUp?.Invoke();
         }
 
         public void Tick()
