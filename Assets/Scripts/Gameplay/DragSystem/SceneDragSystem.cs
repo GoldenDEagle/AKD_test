@@ -43,7 +43,7 @@ namespace Assets.Scripts.Gameplay.DragSystem
         {
             if (_currentlyDraggedObject == null) return;
 
-            _currentlyDraggedObject.SetTargetPosition(_camera.ScreenToWorldPoint(_inputService.PointerPosition));
+            _currentlyDraggedObject.SetDesiredPosition(_camera.ScreenToWorldPoint(_inputService.PointerPosition));
         }
 
         private void OnDragAttempted()

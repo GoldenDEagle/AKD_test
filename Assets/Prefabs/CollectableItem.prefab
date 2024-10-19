@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4068315585538715018}
   - component: {fileID: 8328903895553192899}
   - component: {fileID: -1783228369988409248}
+  - component: {fileID: 8023733867991434586}
   m_Layer: 6
-  m_Name: DraggableObject
+  m_Name: CollectableItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.6436605, b: 0, a: 1}
   m_FlipX: 0
@@ -155,7 +156,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -169,5 +170,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26cfd9ab1b1f35a4ab711e0ae3e08f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragFollowStrength: 10
+--- !u!114 &8023733867991434586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719096217457712657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f03b9fcb8f9544799506b4cf98bf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

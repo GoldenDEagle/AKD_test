@@ -5,9 +5,11 @@ namespace Assets.Scripts.Gameplay.DragSystem
     [RequireComponent(typeof(Rigidbody2D))]
     public class DraggableComponent : MonoBehaviour, IDraggable
     {
+        [SerializeField] private float _dragFollowStrength = 1f;
+
         private Rigidbody2D _rigidbody;
         private bool _isBeingDragged;
-        private Vector2 _targetPosition;
+        private Vector2 _desiredPosition;
 
         private void Awake()
         {
@@ -18,7 +20,8 @@ namespace Assets.Scripts.Gameplay.DragSystem
         {
             if (!_isBeingDragged) return;
 
-            _rigidbody.MovePosition(_targetPosition);
+            var targetPosition = Vector2.Lerp(_rigidbody.position, _desiredPosition, _dragFollowStrength * Time.fixedDeltaTime);
+            _rigidbody.MovePosition(targetPosition);
         }
 
         public void StartDrag()
@@ -33,9 +36,14 @@ namespace Assets.Scripts.Gameplay.DragSystem
             _rigidbody.gravityScale = 1f;
         }
 
-        public void SetTargetPosition(Vector2 targetPosition)
+        public void SetDesiredPosition(Vector2 desiredPosition)
         {
-            _targetPosition = targetPosition;
+            _desiredPosition = desiredPosition;
+        }
+
+        public void EnableDrag(bool isEnabled)
+        {
+            enabled = isEnabled;
         }
     }
 }
